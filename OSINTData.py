@@ -47,7 +47,49 @@ class OSINTData:
         for i in URLs:
             x=requests.get(i, headers=self.headers).text
             if ip in x: print(ip+" detected in: "+i)
-
+    
+    def mispFullSearch(self, value):
+        URLs = ["https://raw.githubusercontent.com/stamparm/ipsum/master/levels/1.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/2.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/4.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/5.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/6.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/7.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/8.txt"]
+        for i in URLs:
+            x=requests.get(i, headers=self.headers).text
+            if value in x: print(value+" detected in: "+i)
+                
+        # https://www.dan.me.uk/torlist/
+        AllFeeds = ["https://rules.emergingthreats.net/blockrules/compromised-ips.txt",
+                "https://check.torproject.org/torbulkexitlist",
+                "https://cybercrime-tracker.net/all.php",
+                "https://raw.githubusercontent.com/pan-unit42/iocs/master/diamondfox/diamondfox_panels.txt",
+                "https://home.nuug.no/~peter/pop3gropers.txt",
+                "https://openphish.com/feed.txt",
+                "https://raw.githubusercontent.com/ktsaou/blocklist-ipsets/master/firehol_level1.netset",
+                "https://cinsscore.com/list/ci-badguys.txt",
+                "https://lists.blocklist.de/lists/all.txt",
+                "https://dataplane.org/vncrfb.txt",
+                "https://dataplane.org/sshpwauth.txt",
+                "https://dataplane.org/sipregistration.txt",
+                "https://dataplane.org/sipquery.txt",
+                "https://dataplane.org/sipinvitation.txt",
+                "http://vxvault.net/URL_List.php",
+                "https://sslbl.abuse.ch/blacklist/sslipblacklist.csv",
+                "https://cybercrime-tracker.net/ccamlist.php",
+                "https://cybercrime-tracker.net/ccamgate.php",
+                "https://blocklist.greensnow.co/greensnow.txt",
+                "https://mirai.security.gives/data/ip_list.txt",
+                "https://malsilo.gitlab.io/feeds/dumps/url_list.txt",
+                "https://malsilo.gitlab.io/feeds/dumps/ip_list.txt",
+                "https://malsilo.gitlab.io/feeds/dumps/domain_list.txt",
+                "https://malshare.com/daily/malshare.current.all.txt"]
+        for i in AllFeeds:
+            x=requests.get(i, headers=self.headers).text
+            if value in x: print(value+" detected in: "+i)
+        print("Scan Complete")
 
         
 if __name__ == "__main__":
@@ -57,4 +99,5 @@ if __name__ == "__main__":
     investigation.talosintelligence(value)
     investigation.greynoise(value)
     #investigation.haveibeenpwned(value)
-    investigation.misp_ipsum(value)
+    #investigation.misp_ipsum(value)
+    investigation.mispFullSearch(value)
