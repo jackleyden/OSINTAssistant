@@ -1,5 +1,7 @@
 import json
 import requests
+import threading
+import time
 
 class OSINTData:
     def __init__(self):
@@ -86,10 +88,21 @@ class OSINTData:
                 "https://malsilo.gitlab.io/feeds/dumps/ip_list.txt",
                 "https://malsilo.gitlab.io/feeds/dumps/domain_list.txt",
                 "https://malshare.com/daily/malshare.current.all.txt"]
+        j=-1
         for i in AllFeeds:
-            x=requests.get(i, headers=self.headers).text
-            if value in x: print(value+" detected in: "+i)
-        print("Scan Complete")
+            j+=1
+            proc=threading.Thread(target=OSINTData.loopfeeds, args=(self, i, value))
+            proc.start()
+            if (j%4 == 0):
+                time.sleep(4)
+             #proc.terminate()
+        time.sleep(2)
+        print("Scan Complete:")
+        
+    def loopfeeds(self, i, value):
+        state=""
+        x=requests.get(i, headers=self.headers).text
+        if value in x: print("ALERT: " + i)
 
         
 if __name__ == "__main__":
