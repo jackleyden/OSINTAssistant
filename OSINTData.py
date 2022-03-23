@@ -36,35 +36,18 @@ class OSINTData:
     def haveibeenpwned(self, email):
         URLs = ["https://haveibeenpwned.com/unifiedsearch/"+email]
         self.reader(URLs)
-        
-    def misp_ipsum(self, ip): #https://www.misp-project.org/feeds/
-        URLs = ["https://raw.githubusercontent.com/stamparm/ipsum/master/levels/1.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/2.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/4.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/5.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/6.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/7.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/8.txt"]
-        for i in URLs:
-            x=requests.get(i, headers=self.headers).text
-            if ip in x: print(ip+" detected in: "+i)
-    
+       
     def mispFullSearch(self, value):
-        URLs = ["https://raw.githubusercontent.com/stamparm/ipsum/master/levels/1.txt",
+        # https://www.dan.me.uk/torlist/
+        AllFeeds = ["https://raw.githubusercontent.com/stamparm/ipsum/master/levels/1.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/2.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/3.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/4.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/5.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/6.txt",
                 "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/7.txt",
-                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/8.txt"]
-        for i in URLs:
-            x=requests.get(i, headers=self.headers).text
-            if value in x: print(value+" detected in: "+i)
-                
-        # https://www.dan.me.uk/torlist/
-        AllFeeds = ["https://rules.emergingthreats.net/blockrules/compromised-ips.txt",
+                "https://raw.githubusercontent.com/stamparm/ipsum/master/levels/8.txt",
+                "https://rules.emergingthreats.net/blockrules/compromised-ips.txt",
                 "https://check.torproject.org/torbulkexitlist",
                 "https://cybercrime-tracker.net/all.php",
                 "https://raw.githubusercontent.com/pan-unit42/iocs/master/diamondfox/diamondfox_panels.txt",
