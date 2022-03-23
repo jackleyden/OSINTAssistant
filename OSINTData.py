@@ -106,7 +106,7 @@ class OSINTData:
 
         
 if __name__ == "__main__":
-    while: True
+    while True:
         value=input("Value: ")
         investigation = OSINTData()
         investigation.talosintelligence(value)
