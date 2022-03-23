@@ -106,11 +106,10 @@ class OSINTData:
 
         
 if __name__ == "__main__":
-    category=input("Category: ")
-    value=input("Value: ")
-    investigation = OSINTData()
-    investigation.talosintelligence(value)
-    investigation.greynoise(value)
-    #investigation.haveibeenpwned(value)
-    #investigation.misp_ipsum(value)
-    investigation.mispFullSearch(value)
+    while: True
+        value=input("Value: ")
+        investigation = OSINTData()
+        investigation.talosintelligence(value)
+        investigation.greynoise(value)
+        #investigation.haveibeenpwned(value)
+        investigation.mispFullSearch(value)
